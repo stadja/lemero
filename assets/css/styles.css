@@ -1,0 +1,36 @@
+@font-face {
+    font-family: timber;
+    src: url('/lemero/garage/assets/fonts/timber/Timber.otf');
+}
+body {
+	height: 100%;
+	background-color: lightgoldenrodyellow;
+	min-height: 100vh;
+
+}
+
+.wrapper {
+	min-height: 100vh;
+	height: 100%;
+	margin-bottom: -5em;
+}
+
+.push, footer {
+	clear: both;
+	height: 5em;
+}
+
+footer {
+	height: 4em;
+	margin-top: 1em;
+	border-top: 1px solid #eee;
+	text-align: center;
+}
+
+h1 {
+    font-family: timber;
+	font-size: 8em;
+	font-weight: 400;
+	color: lightcoral;
+}
+

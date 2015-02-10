@@ -1,0 +1,17 @@
+# see if the module is active
+<IfModule mod_rewrite.c>
+
+    Options +FollowSymLinks
+    
+    # activate RewriteEngine
+    RewriteEngine on
+
+    # send the requests through index.php, except if they are a file ...
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+    # ... or a directory
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    RewriteRule ^(.*)$ index.php/$1 [L]
+
+</IfModule> 
