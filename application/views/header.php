@@ -28,5 +28,5 @@
 <div class="wrapper">
 	<div class="container" id="mainContainer">
 		<div class="page-header">
-			<h1>Garage  Le Mero</h1>
+			<h1><a href="<?php echo site_url('/garage'); ?>">Garage  Le Mero</a></h1>
 		</div>

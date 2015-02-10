@@ -34,3 +34,8 @@ h1 {
 	color: lightcoral;
 }
 
+h1 a, h1 a:hover {
+	color: lightcoral;
+	text-decoration: none;
+}
+

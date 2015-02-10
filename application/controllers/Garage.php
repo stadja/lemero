@@ -35,7 +35,9 @@ class Garage extends CI_Controller {
 
 	public function marques()
 	{
-		$output = $this->grocery_crud->render();
+		$crud = new grocery_CRUD();
+		$crud->set_subject('une marque');
+		$output = $crud->render();
 		$this->_crud_output($output);
 	}
 
@@ -43,6 +45,7 @@ class Garage extends CI_Controller {
 	{
 		$crud = new grocery_CRUD();
 		$crud->set_table('pieces');
+		$crud->set_subject('une pièce');
 		$crud->set_relation('marque','marques','label');
 		$crud->set_field_upload('image','assets/uploads/files');
 		$output = $crud->render();
