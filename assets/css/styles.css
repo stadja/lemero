@@ -2,11 +2,11 @@
     font-family: timber;
     src: url('/lemero/garage/assets/fonts/timber/Timber.otf');
 }
+
 body {
 	height: 100%;
 	background-color: lightgoldenrodyellow;
 	min-height: 100vh;
-
 }
 
 .wrapper {
@@ -39,3 +39,93 @@ h1 a, h1 a:hover {
 	text-decoration: none;
 }
 
+.subheader{
+	font-family: 'Satisfy', cursive;
+	font-size: 2em;
+}
+
+.page-header {
+	text-align: center;
+}
+
+question {
+	/* font-family: 'Satisfy', cursive;
+	font-size: 3em; */
+	font-size: 2em;
+	display: block;
+}
+
+.loader {
+	display: none;
+}
+
+.questionWrapper {
+	margin-bottom: 3em;
+}
+
+.chosen-container {
+	max-width: 100%;
+}
+
+.img-listing {
+	max-width: 160px;
+	max-height: 100px;
+}
+
+.listingWrapper .image {
+	display: inline-block;
+	width: 160px;
+	height: 100px;
+	float: left;
+}
+
+.listingWrapper .listingText {
+	display: inline-block;
+
+}
+
+.listingPiece {
+	display: block;
+	position: relative;
+	height: 100px;
+}
+
+.pieceWrapper {
+	padding: 1em;
+}
+
+.pieceWrapper:nth-child(even) {
+	background: lightgrey;
+}
+
+.pieceWrapper:nth-child(odd) {
+	background: lightyellow;
+}
+
+.pieceWrapper:hover {
+	cursor: pointer;
+	background: lightblue;
+}
+
+.thumbnail {
+	height: 450px;
+	width: 325px;
+	text-align: center;
+	box-shadow: 5px 5px 10px #888888;
+}
+
+.thumbnail:hover {
+	background-color: lightblue;
+}
+
+.contact {
+	box-shadow: 5px 5px 10px #888888;
+}
+
+.contact:active {
+	box-shadow: 3px 3px 10px #888888;
+}
+
+.thumbnailImage {
+	max-height: 200px;
+}

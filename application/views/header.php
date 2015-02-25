@@ -16,7 +16,11 @@
         <link rel="stylesheet" href="<?php echo site_url("assets/css/normalize.css"); ?>">
         <link rel="stylesheet" href="<?php echo site_url("assets/css/main.css"); ?>">
         <link rel="stylesheet" href="<?php echo site_url("assets/css/bootstrap.min.css"); ?>">
+        <link rel="stylesheet" href="<?php echo site_url("assets/css/chosen/chosen.min.css"); ?>">
+        <link rel="stylesheet" href="<?php echo site_url("assets/css/fancybox/jquery.fancybox.css?v=2.1.5"); ?>">
+
         <link rel="stylesheet" href="<?php echo site_url("assets/css/styles.css"); ?>">
+        <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
         <script src="<?php echo site_url("assets/js/vendor/modernizr-2.8.3.min.js"); ?>"></script>
     </head>
     <body>
@@ -26,7 +30,8 @@
 
         <!-- Add your site or application content here -->
 <div class="wrapper">
-	<div class="container" id="mainContainer">
+	<div class="container-fluid" id="mainContainer">
 		<div class="page-header">
-			<h1><a href="<?php echo site_url('/garage'); ?>">Garage  Le Mero</a></h1>
+			<h1><a href="<?php echo site_url(''); ?>">Garage  Le&nbsp;Mero</a></h1>
+            <div class="subheader">Vous cherchez des pièces pour vieilles voitures ? On doit les avoir...</div>
 		</div>
