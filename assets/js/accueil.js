@@ -1,5 +1,24 @@
+var modal = $('#contactModal');
+
 var initMarque = function() {
     $(".fancybox").fancybox();
+
+    $('td.actions a').on('click', function(event) {
+        var href = this.href;
+        var pos = href.indexOf('#');
+        var substr = href.substr(pos + 1);
+
+        var subPos = substr.indexOf('-');
+        var id = substr.substr(0, subPos);
+        var title = substr.substr(subPos + 1);
+        title = decodeURIComponent((title+'').replace(/\+/g, '%20'));
+        
+        modal.find('.piece-title').text(title);
+        modal.modal('show');
+        event.preventDefault();
+        /* Act on the event */
+    });
+
     var marqueSelect = $("#marqueSelect").chosen({
         allow_single_deselect: true
     });
@@ -89,7 +108,6 @@ var initMarque = function() {
 initMarque();
 
 var id = false;
-var modal = $('#contactModal');
 var alert = modal.find('.alert');
 var alertClose = modal.find('#alert-close');
 var alertText = alert.find('#alert-text');
@@ -102,11 +120,12 @@ var messageModal = modal.find('#form-message');
 var nameModal = modal.find('#form-name');
 
 modal.on('show.bs.modal', function(event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var modal = $(this);
-    var title = button.data('title') // Extract info from data-* attributes
-    id = button.data('id') // Extract info from data-* attributes
-    modal.find('.piece-title').text(title);
+    // var button = $(event.relatedTarget) // Button that triggered the modal
+    // console.log(button);
+    // var modal = $(this);
+    // var title = button.data('title') // Extract info from data-* attributes
+    // id = button.data('id') // Extract info from data-* attributes
+    // modal.find('.piece-title').text(title);
 
 });
 

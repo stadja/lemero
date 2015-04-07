@@ -33,7 +33,7 @@
 <?php if ($crud_view): ?>
   <div class="row">
     <div class="col-md-12">
-      <a name="liste"></a>
+      <a name="liste" class="noDecoration">Pièces <span class="brand"><?php echo $marque_label; ?></span></a>
       <?php echo $crud_view; ?>
     </div>
   </div>

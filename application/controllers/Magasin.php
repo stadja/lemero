@@ -41,6 +41,14 @@ class Magasin extends CI_Controller {
 			return $this->_render('magasin/accueil', $data);
 		}
 
+		$marqueLabel = $this->db->get_where('marques', array('id' => $marque))->row();
+
+		if (!$marqueLabel) {
+			redirect('/', 'location', 301);
+		}
+		$marqueLabel = $marqueLabel->label;
+		$data['marque_label'] = $marqueLabel;
+
 		$this->load->library('grocery_CRUD');
 
 		$crud = new grocery_CRUD();
@@ -48,12 +56,10 @@ class Magasin extends CI_Controller {
 
 		$crud->set_table('pieces');
 		$crud->set_subject('une pièce');
-		$crud->set_field_upload('image1','assets/uploads/files');
-		$crud->set_field_upload('image2','assets/uploads/files');
-		$crud->set_field_upload('image3','assets/uploads/files');
-		// $crud->order_by('annee_fin', 'ASC');
 
 		$crud->columns('label', 'modele', 'annee_debut', 'annee_fin', 'etat', 'prix', 'image1');
+	 	$crud->display_as('label','Type de pièce');
+
 		$crud->unset_add();
 		$crud->unset_delete();
 		$crud->unset_read();
@@ -67,8 +73,16 @@ class Magasin extends CI_Controller {
 	 	$crud->display_as('image1','Photos');
 
 		$crud->order_by('annee_debut', 'asc');
+
+		$crud->add_action('Contacter le vendeur', '', '', 'ui-icon-pencil contact-action', array($this,'_callback_url_contact'));
+
 		$output = $crud->render();
 		$this->_crud_output($output, 'magasin/accueil', $data);
+	}
+
+	public function _callback_url_contact($id, $row)
+	{
+		return '#'.$row->id.'-'.urlencode($row->label);
 	}
 
 	public function _callback_prix($value, $row)

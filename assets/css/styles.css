@@ -135,3 +135,16 @@ question {
 .table>tbody>tr>td {
   vertical-align: middle;
 }
+
+.brand {
+    display: inline-block;
+    text-transform: lowercase;
+}
+
+.brand:first-letter {
+    text-transform: uppercase;
+}
+
+.noDecoration, .noDecoration:hover{
+	text-decoration: none;
+}
