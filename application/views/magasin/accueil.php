@@ -1,6 +1,6 @@
 
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-12">
 		<div class="questionWrapper">
 			<marque-selector>
 				<question>
@@ -9,26 +9,35 @@
 				<select data-placeholder="Séléctionnez une marques" style="width:350px;" tabindex="1" class="chosen-select" id="marqueSelect">
 					<option value=""></option>
 					<?php foreach ($marques as $marque): ?>
-						<option value="<?php echo $marque->id?>"><?php echo humanize($marque->label).' ('.$marque->count.')'; ?></option>
+						<option value="<?php echo $marque->id?>" <?php echo ($marque_selected == $marque->id) ? 'selected' : ''; ?>><?php echo humanize($marque->label).' ('.$marque->count.')'; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</marque-selector>
 		</div>	
-		<div class="questionWrapper">
+<!-- 		<div class="questionWrapper">
 			<img class="loader" src='<?php echo site_url("assets/img/ajax-loader.gif"); ?>' id='annee-loader'/>
 			<annee-selector></annee-selector>
 		</div>
 		<div class="questionWrapper">
 			<img class="loader" src='<?php echo site_url("assets/img/ajax-loader.gif"); ?>' id='modele-loader'/>
 			<modele-selector></modele-selector>
-		</div>
+		</div> -->
 
 	</div>
-	<div class="col-md-9">
+<!-- 	<div class="col-md-9">
 		<img class="loader" src='<?php echo site_url("assets/img/ajax-loader.gif"); ?>' id='listing-loader'/>
 		<listing-table></listing-table>
-	</div>
+	</div> -->
 </div>
+
+<?php if ($crud_view): ?>
+  <div class="row">
+    <div class="col-md-12">
+      <a name="liste"></a>
+      <?php echo $crud_view; ?>
+    </div>
+  </div>
+<?php endif ?>
 
 <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

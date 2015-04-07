@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Le Mero Pièces Auto</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -32,6 +32,13 @@
 <div class="wrapper">
 	<div class="container-fluid" id="mainContainer">
 		<div class="page-header">
-			<h1><a href="<?php echo site_url(''); ?>">Garage  Le&nbsp;Mero</a></h1>
+			<h1><a href="<?php echo site_url(''); ?>">Le&nbsp;Mero Pieces auto</a></h1>
             <div class="subheader">Vous cherchez des pièces pour vieilles voitures ? On doit les avoir...</div>
 		</div>
+        <div class="row">
+            <div class="col-md-12">Bla bla explicatif... Lorem ipsum dolor sit amet, consectetur adipisicing elit,<br/>
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...<br/>
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...<br/>
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...<br/>
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...</div>
+        </div>

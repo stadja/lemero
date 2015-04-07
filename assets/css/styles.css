@@ -61,6 +61,8 @@ question {
 
 .questionWrapper {
 	margin-bottom: 3em;
+	margin-top: 3em;
+	text-align: center;
 }
 
 .chosen-container {

@@ -23,7 +23,7 @@ class Magasin extends CI_Controller {
 		$this->accueil();
 	}
 
-	public function accueil()
+	public function accueil($marque = false)
 	{
 		$data = array();
 
@@ -32,13 +32,41 @@ class Magasin extends CI_Controller {
 		->group_by('marques.label')
 		->get('marques')->result();
 		$data['marques'] = $marques;
+		$data['marque_selected'] = $marque;
 
 		$this->js_files[] = site_url('assets/js/accueil.js');
-		$this->_render('magasin/accueil', $data);
+
+		$data['crud_view'] = false;
+		if (!$marque) {
+			return $this->_render('magasin/accueil', $data);
+		}
+
+		$this->load->library('grocery_CRUD');
+
+		$crud = new grocery_CRUD();
+	    $crud->where('marque', $marque);
+
+		$crud->set_table('pieces');
+		$crud->set_subject('une pièce');
+		$crud->set_field_upload('image1','assets/uploads/files');
+		$crud->set_field_upload('image2','assets/uploads/files');
+		$crud->set_field_upload('image3','assets/uploads/files');
+		$crud->order_by('annee_fin', 'ASC');
+		$crud->order_by('annee_debut', 'ASC');
+
+		$crud->columns('label', 'modele', 'annee_debut', 'annee_fin', 'etat', 'prix', 'prix_unitaire', 'port_inclus', 'image1', 'image2', 'image3');
+		$crud->unset_add();
+		$crud->unset_delete();
+		$crud->unset_read();
+		$crud->unset_edit();
+		$crud->unset_export();
+		$crud->unset_print();
+
+		$output = $crud->render();
+		$this->_crud_output($output, 'magasin/accueil', $data);
 	}
 
-	public function getYears($marqueId)
-	{
+/*	public function getYears($marqueId){
 		$pieces = $this->db->where('marque', $marqueId)->get('pieces')->result();
 		
 		usort($pieces, function ($a, $b) {
@@ -132,7 +160,7 @@ class Magasin extends CI_Controller {
 		$data = array('pieces' => $pieces);
 		$this->load->view('magasin/partials/listing', $data);
 		
-	}
+	}*/
 
 	public function ask() {
 		$this->load->helper('email');
@@ -199,6 +227,21 @@ class Magasin extends CI_Controller {
 			'css_files' => $this->css_files,
 			'js_files'  => $this->js_files
 		));
+
+		$this->load->view('header', $data);
+		$this->load->view($view, $data);
+		$this->load->view('footer', $data);
+
+	}
+
+	protected function _crud_output($crud, $view = 'crud.php', $data = array())
+	{
+		$this->css_files = array_merge($this->css_files, $crud->css_files);
+		$this->js_files  = array_merge($this->js_files, $crud->js_files);
+
+		$data['css_files'] = $this->css_files;
+		$data['js_files'] = $this->js_files;
+		$data['crud_view'] = $crud->output;
 
 		$this->load->view('header', $data);
 		$this->load->view($view, $data);
