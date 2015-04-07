@@ -153,3 +153,15 @@ question {
 	background: none;
 	background-color: lightgreen;
 }
+
+footer {
+  text-align: left;
+}
+
+footer ul {
+  padding-left: 1em;
+}
+
+footer li {
+  list-style-type: none;
+}

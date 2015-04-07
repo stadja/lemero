@@ -3,7 +3,28 @@
 </div>
 
 <footer>
-	bim bam boum
+	<div class="row">
+        <div class="col-xs-3 col-xs-offset-1">
+            Contact:
+            <ul>
+                <li><a href="tel:06060606">06&nbsp;06&nbsp;06&nbsp;06</a></li>
+                <li><a href="mailto:bob@fneu.com">mail@mail.com</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-3 col-xs-offset-1">
+            Information entreprise:
+            <ul>
+                <li>Siret: 0602742543</li>
+                <li>3 rue des trois rues</li>
+            </ul>
+        </div>
+        <div class="col-xs-3 col-xs-offset-1">
+            Réalisé par:
+            <ul>
+                <li><a href="http://www.stadja.net" target="_blank">stadja.net</a></li>
+            </ul>
+        </div>
+    </div>
 </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
