@@ -131,3 +131,7 @@ question {
 .thumbnailImage {
 	max-height: 200px;
 }
+
+.table>tbody>tr>td {
+  vertical-align: middle;
+}

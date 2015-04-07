@@ -51,10 +51,9 @@ class Magasin extends CI_Controller {
 		$crud->set_field_upload('image1','assets/uploads/files');
 		$crud->set_field_upload('image2','assets/uploads/files');
 		$crud->set_field_upload('image3','assets/uploads/files');
-		$crud->order_by('annee_fin', 'ASC');
-		$crud->order_by('annee_debut', 'ASC');
+		// $crud->order_by('annee_fin', 'ASC');
 
-		$crud->columns('label', 'modele', 'annee_debut', 'annee_fin', 'etat', 'prix', 'prix_unitaire', 'port_inclus', 'image1', 'image2', 'image3');
+		$crud->columns('label', 'modele', 'annee_debut', 'annee_fin', 'etat', 'prix', 'image1');
 		$crud->unset_add();
 		$crud->unset_delete();
 		$crud->unset_read();
@@ -62,10 +61,49 @@ class Magasin extends CI_Controller {
 		$crud->unset_export();
 		$crud->unset_print();
 
+		$crud->callback_column('prix',array($this,'_callback_prix'));
+
+		$crud->callback_column('image1',array($this,'_callback_image'));
+	 	$crud->display_as('image1','Photos');
+
+		$crud->order_by('annee_debut', 'asc');
 		$output = $crud->render();
 		$this->_crud_output($output, 'magasin/accueil', $data);
 	}
 
+	public function _callback_prix($value, $row)
+	{
+		$prix = "<strong>".$row->prix."€</strong>";
+		$prix .= $row->prix_unitaire ? ' (prix unitaire)' : '';
+		$prix .= $row->port_inclus ? ' - frais de ports inclus' : ' + frais de ports à ajouter';
+  		return $prix;
+	}
+
+	public function _callback_image($value, $row)
+	{
+		$images = '';
+		$fancybox = '';
+		if ($row->image1) {
+			$url = "http://prototype.stadja.net/lemero/garage/assets/uploads/files/".$row->image1;
+			$images .= "<a href='$url' class='image-thumbnail'>";
+			$images .= "<img src='$url' height='50px'></a>";
+			$fancybox .= '<a class="fancybox" rel="group-'.$row->id.'" href="'.$url.'"><img height="50" class="thumbnailImage" src="'.$url.'" alt="" data-holder-rendered="true" style="display: block;"/></a>';
+		}
+		if ($row->image2) {
+			$url = "http://prototype.stadja.net/lemero/garage/assets/uploads/files/".$row->image2;
+			$images .= "<a href='$url' class='image-thumbnail'>";
+			$images .= "<img src='$url' height='50px'></a>";
+			$fancybox .= '<a class="fancybox" rel="group-'.$row->id.'" href="'.$url.'"><img height="50" class="thumbnailImage" src="'.$url.'" alt="" data-holder-rendered="true" style="display: none;"/></a>';
+		}
+		if ($row->image3) {
+			$url = "http://prototype.stadja.net/lemero/garage/assets/uploads/files/".$row->image3;
+			$images .= "<a href='$url' class='image-thumbnail'>";
+			$images .= "<img src='$url' height='50px'></a>";
+			$fancybox .= '<a class="fancybox" rel="group-'.$row->id.'" href="'.$url.'"><img height="50" class="thumbnailImage" src="'.$url.'" alt="" data-holder-rendered="true" style="display: none;"/></a>';
+		}
+
+  		return $fancybox;
+	}
 /*	public function getYears($marqueId){
 		$pieces = $this->db->where('marque', $marqueId)->get('pieces')->result();
 		

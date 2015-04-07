@@ -1,4 +1,5 @@
 var initMarque = function() {
+    $(".fancybox").fancybox();
     var marqueSelect = $("#marqueSelect").chosen({
         allow_single_deselect: true
     });
