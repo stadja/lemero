@@ -25,6 +25,8 @@ class Garage extends CI_Controller {
 	{
 		parent::__construct();
 
+		$this->load->helper('cookie');
+
 		$this->load->database();
 		$this->load->helper('url');
 
@@ -34,8 +36,48 @@ class Garage extends CI_Controller {
 		$this->js_files = array();
 	}
 
+	public function security() {
+		return $this->_render('security');
+	}
+
+	public function disconnect() {
+		$cookie = array(
+		    'name'   => 'lmpa',
+		    'value'  => '',
+		    'expire' => '86500',
+		    'domain' => $this->config->item('domain'),
+		    'path'   => '/',
+		    'secure' => false
+		);
+		$this->input->set_cookie($cookie);
+
+		return redirect('/');
+	}
+
+	public function testSecurity() {
+		$input = $this->input->get('password');
+		if ($input) {
+			$cookie = array(
+			    'name'   => 'lmpa',
+			    'value'  => md5($input),
+			    'expire' => '86500',
+			    'domain' => $this->config->item('domain'),
+			    'path'   => '/',
+			    'secure' => false
+			);
+			$this->input->set_cookie($cookie);
+			redirect(current_url());
+		}
+		$securityCheck = $this->config->item('security');
+		$security = $this->input->cookie('lmpa');
+		return md5($securityCheck) == $security;
+	}
+
 	public function marques()
 	{
+		if (!$this->testSecurity()) {
+			return $this->security();
+		}
 		$crud = new grocery_CRUD();
 		$crud->set_subject('une marque');
 		$output = $crud->render();
@@ -44,6 +86,9 @@ class Garage extends CI_Controller {
 
 	public function pieces()
 	{
+		if (!$this->testSecurity()) {
+			return $this->security();
+		}
 		$crud = new grocery_CRUD();
 		$crud->set_table('pieces');
 		$crud->set_subject('une pièce');
@@ -104,11 +149,26 @@ class Garage extends CI_Controller {
 		$this->load->view('header', $data);
 		$this->load->view($view, $data);
 		$this->load->view('footer', $data);
+	}
+
+	protected function _render($view, $data = array())
+	{
+		$data = array_merge($data, array(
+			'css_files' => $this->css_files,
+			'js_files'  => $this->js_files
+		));
+
+		$this->load->view('header', $data);
+		$this->load->view($view, $data);
+		$this->load->view('footer', $data);
 
 	}
 
 	public function index()
 	{
+		if (!$this->testSecurity()) {
+			return $this->security();
+		}
 		$this->pieces();
 		// $this->load->view('welcome_message');
 	}

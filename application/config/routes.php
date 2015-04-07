@@ -51,5 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'magasin';
 $route['magasin/(:num)'] = "magasin/accueil/$1";
+$route['admin'] = "garage";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
