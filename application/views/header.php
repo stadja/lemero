@@ -24,6 +24,9 @@
         <script src="<?php echo site_url("assets/js/vendor/modernizr-2.8.3.min.js"); ?>"></script>
     </head>
     <body>
+    <script type="text/javascript">
+        var mainUrl = '<?php echo site_url(); ?>';
+    </script>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->

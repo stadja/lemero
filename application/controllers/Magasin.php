@@ -98,121 +98,20 @@ class Magasin extends CI_Controller {
 		$images = '';
 		$fancybox = '';
 		if ($row->image1) {
-			$url = "http://prototype.stadja.net/lemero/garage/assets/uploads/files/".$row->image1;
-			$images .= "<a href='$url' class='image-thumbnail'>";
-			$images .= "<img src='$url' height='50px'></a>";
-			$fancybox .= '<a class="fancybox" rel="group-'.$row->id.'" href="'.$url.'"><img height="50" class="thumbnailImage" src="'.$url.'" alt="" data-holder-rendered="true" style="display: block;"/></a>';
+			$url = site_url("/assets/uploads/files/".$row->image1);
+			$fancybox .= '<a class="fancybox" rel="group-'.$row->id.'" href="'.$url.'"><img height="50" class="thumbnailImage" src="'.$url.'" alt="" data-holder-rendered="true" style="display: inline-block;"/></a>';
 		}
 		if ($row->image2) {
-			$url = "http://prototype.stadja.net/lemero/garage/assets/uploads/files/".$row->image2;
-			$images .= "<a href='$url' class='image-thumbnail'>";
-			$images .= "<img src='$url' height='50px'></a>";
-			$fancybox .= '<a class="fancybox" rel="group-'.$row->id.'" href="'.$url.'"><img height="50" class="thumbnailImage" src="'.$url.'" alt="" data-holder-rendered="true" style="display: none;"/></a>';
+			$url = site_url("/assets/uploads/files/".$row->image2);
+			$fancybox .= '<a class="fancybox" rel="group-'.$row->id.'" href="'.$url.'"><img height="50" class="thumbnailImage" src="'.$url.'" alt="" data-holder-rendered="true" style="display: inline-block;"/></a>';
 		}
 		if ($row->image3) {
-			$url = "http://prototype.stadja.net/lemero/garage/assets/uploads/files/".$row->image3;
-			$images .= "<a href='$url' class='image-thumbnail'>";
-			$images .= "<img src='$url' height='50px'></a>";
-			$fancybox .= '<a class="fancybox" rel="group-'.$row->id.'" href="'.$url.'"><img height="50" class="thumbnailImage" src="'.$url.'" alt="" data-holder-rendered="true" style="display: none;"/></a>';
+			$url = site_url("/assets/uploads/files/".$row->image3);
+			$fancybox .= '<a class="fancybox" rel="group-'.$row->id.'" href="'.$url.'"><img height="50" class="thumbnailImage" src="'.$url.'" alt="" data-holder-rendered="true" style="display: inline-block;"/></a>';
 		}
 
   		return $fancybox;
 	}
-/*	public function getYears($marqueId){
-		$pieces = $this->db->where('marque', $marqueId)->get('pieces')->result();
-		
-		usort($pieces, function ($a, $b) {
-			$annee_a =  $a->annee_debut;
-			$annee_b =  $b->annee_debut;
-			if ($a->annee_debut == $b->annee_debut) {
-				$annee_a =  $a->annee_fin;
-				$annee_b =  $b->annee_fin;
-			}
-
-			return ($annee_a < $annee_b) ? -1 : 1;
-		});
-
-		$years = array();
-		$noDate = 0;
-		$allDates = 0;
-		foreach($pieces as $piece) {
-			$allDates++;
-
-			if (!$piece->annee_fin) {
-				$piece->annee_fin = $piece->annee_debut;
-			} elseif (!$piece->annee_debut) {
-				$piece->annee_debut = $piece->annee_fin;
-			}
-
-			if (!$piece->annee_debut) {
-				$noDate++;
-				continue;
-			}
-
-			for ($i=$piece->annee_debut; $i <= $piece->annee_fin; $i++) { 
-				if (!isset($years[$i])) {
-					$years[$i] = 0;
-				}
-				$years[$i]++;
-			}
-		}
-
-		foreach ($years as $year => $count) {
-			$years[$year] += $noDate;
-		}
-
-		if ($allDates) {
-			$years[0] = $allDates;
-		}
-
-		$data = array('years' => $years);
-		$this->load->view('magasin/partials/yearselect', $data);
-	}
-
-	public function getModels($marqueId, $year) {
-		$pieces = $this->db->where('marque', $marqueId);
-
-		if ($year) {
-			$pieces->where("((annee_debut IS NULL AND annee_fin IS NULL) 
-				OR ((annee_fin IS NULL OR annee_fin < 1) AND annee_debut = $year) 
-				OR (annee_debut <= $year AND annee_fin >= $year))");
-		}
-
-		$pieces = $pieces->get('pieces')->result();
-
-		$modeles = array();
-
-		foreach ($pieces as $piece) {
-			$modele = $piece->modele;
-			$modele = underscore(strtolower($modele));
-			if (!isset($modeles[$modele])) {
-				$modeles[$modele] = 0;
-			}
-			$modeles[$modele]++;
-		}
-		ksort($modeles);
-		$data = array('modeles' => $modeles);
-		$this->load->view('magasin/partials/modeleselect', $data);
-	}
-
-	public function getPieces($marqueId, $year, $modele) {
-		$pieces = $this->db->where('marque', $marqueId);
-
-		if ($year) {
-			$pieces->where("((annee_debut IS NULL AND annee_fin IS NULL) 
-				OR ((annee_fin IS NULL OR annee_fin < 1) AND annee_debut = $year) 
-				OR (annee_debut <= $year AND annee_fin >= $year))");
-		}
-
-		$modeleSql = str_replace('_', '%', $modele);
-		$pieces = $pieces->where("modele LIKE '$modeleSql'")
-		->order_by('annee_debut', 'ASC')
-		->get('pieces')->result();
-		
-		$data = array('pieces' => $pieces);
-		$this->load->view('magasin/partials/listing', $data);
-		
-	}*/
 
 	public function ask() {
 		$this->load->helper('email');

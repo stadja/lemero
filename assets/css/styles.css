@@ -1,6 +1,6 @@
 @font-face {
     font-family: timber;
-    src: url('/lemero/garage/assets/fonts/timber/Timber.otf');
+    src: url('../fonts/timber/Timber.otf');
 }
 
 body {
@@ -147,4 +147,9 @@ question {
 
 .noDecoration, .noDecoration:hover{
 	text-decoration: none;
+}
+
+.edit_button.ui-button {
+	background: none;
+	background-color: lightgreen;
 }
