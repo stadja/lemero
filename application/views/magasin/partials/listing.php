@@ -1,22 +1,3 @@
-<!-- <div class="listingWrapper row">
-	<?php foreach ($pieces as $piece): ?>
-		<div class="pieceWrapper">
-			<div id="piece-<?php echo $piece->id; ?>" class="listingPiece">
-				<div class='image'><img class="img-listing" src="<?php echo site_url('assets/uploads/files/'.$piece->image1); ?>" /></div class='listingImage'>
-				<div class='listingText'><strong><?php echo $piece->label; ?></strong>
-					<?php if($piece->annee_debut): ?>
-						<br/><?php echo ($piece->annee_fin ? $piece->annee_debut.' / '.$piece->annee_fin: $piece->annee_debut); ?>
-					<?php endif; ?>
-					<?php if($piece->etat): ?>
-						<br/><?php echo $piece->etat; ?>
-					<?php endif; ?>
-					<br/><strong><?php echo $piece->prix; ?>€</strong><?php echo ($piece->prix_unitaire ? ' (prix unitaire)' : ''); ?><?php echo ($piece->port_inclus ? ' - frais de ports inclus' : ' + frais de ports à ajouter'); ?>
-				</div>
-			</div>
-		</div>
-	<?php endforeach ?>
-</div> -->
-
 <div class="row">
 	<?php foreach ($pieces as $piece): ?>
 		<div class="col-sm-6 col-md-4">

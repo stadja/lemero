@@ -57,7 +57,7 @@ class Magasin extends CI_Controller {
 		$crud->set_table('pieces');
 		$crud->set_subject('une pièce');
 
-		$crud->columns('label', 'modele', 'annee_debut', 'annee_fin', 'etat', 'prix', 'image1');
+		$crud->columns('annee_debut', 'annee_fin', 'modele', 'label', 'etat', 'prix', 'image1');
 	 	$crud->display_as('label','Type de pièce');
 
 		$crud->unset_add();
@@ -89,7 +89,7 @@ class Magasin extends CI_Controller {
 	{
 		$prix = "<strong>".$row->prix."€</strong>";
 		$prix .= $row->prix_unitaire ? ' (prix unitaire)' : '';
-		$prix .= $row->port_inclus ? ' - frais de ports inclus' : ' + frais de ports à ajouter';
+		$prix .= $row->port_inclus ? ' - frais de port inclus' : ' + frais de port à ajouter';
   		return $prix;
 	}
 

@@ -165,3 +165,7 @@ footer ul {
 footer li {
   list-style-type: none;
 }
+
+.bigger {
+	font-size: 1.2em;
+}
