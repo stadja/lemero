@@ -33,6 +33,7 @@ class Magasin extends CI_Controller {
 		->get('marques')->result();
 		$data['marques'] = $marques;
 		$data['marque_selected'] = $marque;
+		$data['title'] = false;
 
 		$this->js_files[] = site_url('assets/js/accueil.js');
 

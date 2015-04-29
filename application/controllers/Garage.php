@@ -143,7 +143,8 @@ class Garage extends CI_Controller {
 		$data = array(
 			'css_files' => $this->css_files,
 			'js_files'  => $this->js_files,
-			'crud_view' => $crud->output
+			'crud_view' => $crud->output,
+			'title' => false
 		);
 
 		$this->load->view('header', $data);
@@ -155,7 +156,8 @@ class Garage extends CI_Controller {
 	{
 		$data = array_merge($data, array(
 			'css_files' => $this->css_files,
-			'js_files'  => $this->js_files
+			'js_files'  => $this->js_files,
+			'title' => false
 		));
 
 		$this->load->view('header', $data);
