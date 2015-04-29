@@ -9,6 +9,7 @@
 
         <link rel="apple-touch-icon" href="<?php echo site_url("assets/img/apple-touch-icon.png"); ?>">
         <!-- Place favicon.ico in the root directory -->
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
 		<?php foreach($css_files as $file): ?>
 			<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
@@ -22,6 +23,8 @@
         <link rel="stylesheet" href="<?php echo site_url("assets/css/styles.css"); ?>">
         <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
         <script src="<?php echo site_url("assets/js/vendor/modernizr-2.8.3.min.js"); ?>"></script>
+        <meta name="google-site-verification" content="9wnzyJol-p_Bi0t0h2hp0GMDrPHL1glMXMQvv3BDpXc" />
+
     </head>
     <body>
     <script type="text/javascript">
@@ -36,12 +39,9 @@
 	<div class="container-fluid" id="mainContainer">
 		<div class="page-header">
 			<h1><a href="<?php echo site_url(''); ?>">Le&nbsp;Mero Pieces auto</a></h1>
-            <div class="subheader">Vous cherchez des pièces pour vieilles voitures ? On doit les avoir...</div>
+            <div class="subheader">Stock de pièces automobiles occasions et neuves pour voitures américaines et françaises.</div>
 		</div>
         <div class="row">
-            <div class="col-md-12">Bla bla explicatif... Lorem ipsum dolor sit amet, consectetur adipisicing elit,<br/>
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...<br/>
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...<br/>
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...<br/>
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...</div>
+            <div class="col-md-12 bigger">Les pièces sont classées par année, ensuite par modèle, puis par type de pièce disponible: <strong>stock remis à jour régulièrement</strong><br/>
+            Tout n'est pas listé, <a href="mailto:contact@lemero.fr">contactez-moi</a>.</div>
         </div>
