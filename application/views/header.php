@@ -3,7 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Le Mero Pièces Auto</title>
+        <title>
+        <?php if ($title): ?>
+            <?php echo $title.' - '; ?>
+        <?php endif ?>
+        Le Mero Pièces Auto
+        </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 

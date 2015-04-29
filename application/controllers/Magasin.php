@@ -48,6 +48,7 @@ class Magasin extends CI_Controller {
 		}
 		$marqueLabel = $marqueLabel->label;
 		$data['marque_label'] = $marqueLabel;
+		$data['title'] = 'Stock '.$marqueLabel;
 
 		$this->load->library('grocery_CRUD');
 
