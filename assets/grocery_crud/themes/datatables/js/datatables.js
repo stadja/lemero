@@ -169,6 +169,12 @@ function loadDataTable(this_datatables) {
 		"bDestory": true,
 		"bRetrieve": true,
 		"fnDrawCallback": function() {
+			var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+			var brand = document.getElementsByClassName('brand');
+			brand = brand[0];
+			var rect = brand.getBoundingClientRect();
+			var scroll = scrollTop + rect.top;
+			window.scrollTo(0, scroll);
 			$('.image-thumbnail').fancybox({
 				'transitionIn'	:	'elastic',
 				'transitionOut'	:	'elastic',
