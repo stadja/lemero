@@ -25,6 +25,12 @@ class Magasin extends CI_Controller {
 
 	public function accueil($marque = false)
 	{
+
+		if ($marque && !is_numeric($marque)) {
+			$marque = urldecode($marque);
+			$marque = $this->db->get_where('marques', array('label' => $marque))->row();
+			$marque = $marque->id;
+		}
 		$data = array();
 
 		$marques = $this->db->select('marques.*, count(pieces.id) as count')

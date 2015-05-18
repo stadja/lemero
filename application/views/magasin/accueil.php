@@ -9,7 +9,7 @@
 				<select data-placeholder="Séléctionnez une marques" style="width:350px;" tabindex="1" class="chosen-select" id="marqueSelect">
 					<option value=""></option>
 					<?php foreach ($marques as $marque): ?>
-						<option value="<?php echo $marque->id?>" <?php echo ($marque_selected == $marque->id) ? 'selected' : ''; ?>><?php echo humanize($marque->label).' ('.$marque->count.')'; ?></option>
+						<option value="<?php echo urlencode(strtolower($marque->label)); ?>" <?php echo ($marque_selected == $marque->id) ? 'selected' : ''; ?>><?php echo humanize($marque->label).' ('.$marque->count.')'; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</marque-selector>

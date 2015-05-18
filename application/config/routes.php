@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'magasin';
-$route['magasin/(:num)'] = "magasin/accueil/$1";
+$route['magasin/(:any)'] = "magasin/accueil/$1";
 $route['admin'] = "garage";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
